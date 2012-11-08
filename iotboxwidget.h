@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "qextserialport.h"
+
 namespace Ui {
 class iotboxWidget;
 }

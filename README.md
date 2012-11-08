@@ -20,15 +20,15 @@ iotbox
     bool getDeviceInfo(QMap<QString, QString> &device)
     bool getCommand(QString &command)
 
-###framePraser类
+###frameParser类
 
 数据帧解析器。
 
 对数据帧进行初步分解，通过指令确认为IOT扩展版指令（0x21~0x23，0x24待定）后，
 创建iotFrame对象进行有效数据处理并把该对象返回。
 
-    framePraser()
-    ~framePraser()
+    frameParser()
+    ~frameParser()
     bool praseFrame(const QByteArray &frame, iotFrame &frameObj)
 
 ###iotLog类
@@ -39,7 +39,7 @@ IOT数据记录器。
 通过实现updateUI方法（private或protected）对UI进行更新。
 
     iotLog()
-    iotLog(QTableWidget &uiObj)
+    iotLog(QTreeWidget &uiObj)
     ~iotLog()
     bool update(const iotFrame &frameObj)
     bool getDeviceCurrentData(QMap<QString, QMap<QString, QString>>)
