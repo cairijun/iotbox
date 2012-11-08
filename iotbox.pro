@@ -15,15 +15,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         iotboxwidget.cpp \
     crc_ccitt.cpp \
-    frameparse.cpp \
+    frameparser.cpp \
     iotframe.cpp \
     iotlog.cpp
 
 HEADERS  += iotboxwidget.h \
     crc_ccitt.h \
-    frameparse.h \
+    frameparser.h \
     iotframe.h \
-    iotlog.h
+    iotlog.h \
+    frameparser.h \
+    protocolconst.h
 
 FORMS    += iotboxwidget.ui
 

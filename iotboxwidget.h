@@ -5,16 +5,18 @@
 
 #include "qextserialport.h"
 
-#include "frameparse.h"
+#include "frameparser.h"
 #include "iotframe.h"
 #include "iotlog.h"
+
+#include "protocolconst.h"
 
 namespace Ui {
 class iotboxWidget;
 }
 
 namespace IOTBox {
-class frameParse;
+class frameParser;
 class iotFrame;
 class iotLog;
 }
@@ -35,6 +37,11 @@ private slots:
 private:
     Ui::iotboxWidget *ui;
     QextSerialPort *serialPortObj;
+    frameParser *parseObj;
+    iotLog *logObj;
+    QByteArray *mainBuffer;
+
+    void parseAByte(unsigned char aByte);
 };
 
 #endif // IOTBOXWIDGET_H
