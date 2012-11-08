@@ -16,9 +16,17 @@ iotboxWidget::iotboxWidget(QWidget *parent) :
     ui->portBox->addItem(QString("ttySAC1"), QString("/dev/ttySAC1"));
     ui->portBox->addItem(QString("ttySAC2"), QString("/dev/ttySAC2"));
 
+    //初始化各对象
+    serialPortObj = new QextSerialPort(QextSerialPort::EventDriven, this);
+    connect(serialPortObj, SIGNAL(readyRead()), this, SLOT(data_arrived());
 }
 
 iotboxWidget::~iotboxWidget()
 {
     delete ui;
+}
+
+void iotboxWidget::on_openButton_clicked()
+{
+
 }

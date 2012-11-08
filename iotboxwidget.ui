@@ -37,10 +37,72 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>331</width>
-          <height>221</height>
+          <width>321</width>
+          <height>211</height>
          </rect>
         </property>
+        <attribute name="headerVisible">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="headerCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="headerDefaultSectionSize">
+         <number>200</number>
+        </attribute>
+        <attribute name="headerStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>设备</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>数据</string>
+         </property>
+        </column>
+        <item>
+         <property name="text">
+          <string>新建项目</string>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>新建子项目2</string>
+          </property>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>新建项目2</string>
+         </property>
+         <property name="text">
+          <string>3</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>新建子项目</string>
+          </property>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>新建项目3</string>
+          </property>
+          <property name="text">
+           <string>5</string>
+          </property>
+         </item>
+        </item>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
