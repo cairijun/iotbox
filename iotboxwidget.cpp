@@ -70,7 +70,10 @@ void iotboxWidget::parseAByte(unsigned char aByte)
         if(mainBuffer->length() == 10)
             dataRemain = aByte;
         if(aByte == FRA_SGN_ETX && (!dataRemain)) {//排除有效数据区出现的帧结束标志
-            //TO-DO:把主缓冲复制给parseObj
+            iotFrame *frameObj;
+            parseObj->praseFrame(*mainBuffer, frameObj);
+            logObj->update(*frameObj);
+
             mainBuffer->clear();
         }
     }

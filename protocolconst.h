@@ -48,4 +48,37 @@
 #define CMD_STA_ACK 0x00
 #endif
 
+//类静态成员常量初始化函数
+#ifndef IOTFRAME_INIT_FUN
+#define IOTFRAME_INIT_FUN \
+QMap<char, QString> iotFrame::init(int type) \
+{ \
+    QMap<char, QString> rObj; \
+    switch(type) \
+    { \
+    case 0:/* 设备类型定义 */ \
+        rObj[0x01] = "ARM"; \
+        rObj[0x02] = "433Mhz"; \
+        rObj[0x03] = "2.4G"; \
+        rObj[0x04] = "Zigbee"; \
+        rObj[0x05] = "Bluetooth"; \
+        rObj[0x06] = "HF"; \
+        rObj[0x07] = "UHF"; \
+    case 1:/* 命令描述定义 */ \
+        rObj[0x21] = "应答"; \
+        rObj[0x22] = "定时上传"; \
+        rObj[0x23] = "按键突发上传"; \
+    case 2:/* IOT-EB类型定义 */ \
+        rObj[0x02] = "IOT-EB2"; \
+        rObj[0x03] = "IOT-EB3"; \
+        rObj[0x04] = "IOT-EB4"; \
+        rObj[0x05] = "IOT-EB5"; \
+        rObj[0x06] = "IOT-EB6"; \
+        rObj[0x07] = "IOT-EB7(雨滴传感器)"; \
+        rObj[0x0F] = "IOT-EB15(心率检测传感器)"; \
+    } \
+    return rObj; \
+}
+#endif
+
 #endif // PROTOCOLCONST_H
