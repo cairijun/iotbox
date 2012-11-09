@@ -4,7 +4,7 @@ iotLog::iotLog()
 {
 }
 
-iotLog::iotLog(QTreeWidget &uiObj)
+iotLog::iotLog(QTreeWidget *uiObj)
 {
 }
 

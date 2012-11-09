@@ -12,7 +12,7 @@ class iotLog
 {
 public:
     iotLog();
-    iotLog(QTreeWidget &uiObj);
+    iotLog(QTreeWidget *uiObj);
     ~iotLog();
     bool update(const iotFrame &frameObj);
     bool getDeviceCurrentData(QMap<QString, QMap<QString, QString> >);//注意后面一个空格！
