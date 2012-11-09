@@ -21,6 +21,8 @@ iotboxWidget::iotboxWidget(QWidget *parent) :
     connect(serialPortObj, SIGNAL(readyRead()), this, SLOT(data_arrived()));
 
     mainBuffer = new QByteArray();
+    parseObj = new frameParser();
+    logObj = new iotLog(ui->dataTree);
 }
 
 iotboxWidget::~iotboxWidget()
@@ -56,13 +58,18 @@ void iotboxWidget::data_arrived()
 
 void iotboxWidget::parseAByte(unsigned char aByte)
 {
+    static int dataRemain = 0;//记录有效数据长度
     if(mainBuffer->isEmpty()) {
         if(aByte == FRA_SGN_STX)
             mainBuffer->append(aByte);
     }
     else {
         mainBuffer->append(aByte);
-        if(aByte == FRA_SGN_ETX) {
+        if(dataRemain)
+            dataRemain--;
+        if(mainBuffer->length() == 10)
+            dataRemain = aByte;
+        if(aByte == FRA_SGN_ETX && (!dataRemain)) {//排除有效数据区出现的帧结束标志
             //TO-DO:把主缓冲复制给parseObj
             mainBuffer->clear();
         }

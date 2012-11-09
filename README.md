@@ -39,7 +39,7 @@ IOT数据记录器。
 通过实现updateUI方法（private或protected）对UI进行更新。
 
     iotLog()
-    iotLog(QTreeWidget &uiObj)
+    iotLog(QTreeWidget *uiObj)
     ~iotLog()
     bool update(const iotFrame &frameObj)
     bool getDeviceCurrentData(QMap<QString, QMap<QString, QString> >)
