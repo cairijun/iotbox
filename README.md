@@ -29,7 +29,7 @@ iotbox
 
     frameParser()
     ~frameParser()
-    bool praseFrame(const QByteArray &frame, iotFrame &frameObj)
+    bool parseFrame(const QByteArray &frame, iotFrame *frameObj)
 
 ###iotLog类
 
@@ -42,8 +42,8 @@ IOT数据记录器。
     iotLog(QTreeWidget &uiObj)
     ~iotLog()
     bool update(const iotFrame &frameObj)
-    bool getDeviceCurrentData(QMap<QString, QMap<QString, QString>>)
+    bool getDeviceCurrentData(QMap<QString, QMap<QString, QString> >)
     bool getDeviceCurrentData(const QString &device, QMap<QString, QString>)
     bool getDeviceCurrentData(const QString &device, const QString &key, QString &value)
-    bool getDeviceLog(const QString &device, QVector<QMap<QString, QString>>)
+    bool getDeviceLog(const QString &device, QVector<QMap<QString, QString> >)
 
