@@ -4,7 +4,7 @@ frameParser::frameParser()
 {
 }
 
-bool frameParser::praseFrame(const QByteArray &frame, iotFrame *frameObj)
+bool frameParser::praseFrame(const QByteArray &frame, iotFrame *frameObj) const
 {
     if(crc(frame.constData(), frame.length() - 1))
         return false;//CRC校验失败
@@ -19,12 +19,18 @@ bool frameParser::praseFrame(const QByteArray &frame, iotFrame *frameObj)
 
     device["MID_TYPE"] = iotFrame::DEV_TYPE_MAP[frame[1]];
 
-    tmpStr.setNum((frame[2] << 8) + frame[3], 16);
+    //tmpStr.setNum((frame[2] << 8) + frame[3], 16);
+    tmpStr = QString("0x%1%2")
+            .arg(static_cast<uint>(frame[2]), 2, 16, QLatin1Char('0'))
+            .arg(static_cast<uint>(frame[3]), 2, 16, QLatin1Char('0'));
     device["MID_ADDR"] = tmpStr;
 
     device["DST_TYPE"] = iotFrame::DEV_TYPE_MAP[frame[4]];
 
-    tmpStr.setNum((frame[5] << 8) + frame[6], 16);
+    //tmpStr.setNum((frame[5] << 8) + frame[6], 16);
+    tmpStr = QString("0x%1%2")
+            .arg(static_cast<uint>(frame[5]), 2, 16, QLatin1Char('0'))
+            .arg(static_cast<uint>(frame[6]), 2, 16, QLatin1Char('0'));
     device["DST_ADDR"] = tmpStr;
 
     cmdStr = iotFrame::CMD_NAME_MAP[frame[7]];

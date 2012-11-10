@@ -32,7 +32,7 @@ bool iotFrame::praseFrameData(
     return parseMainData(data);
 }
 
-bool iotFrame::getFrameData(QMap<QString, QString> &data)
+bool iotFrame::getFrameData(QMap<QString, QString> &data) const
 {
     if(!this->data.empty()) {
         data = this->data;
@@ -42,7 +42,7 @@ bool iotFrame::getFrameData(QMap<QString, QString> &data)
         return false;
 }
 
-bool iotFrame::getFrameData(QMap<QString, QString> &data, QString &device)
+bool iotFrame::getFrameData(QMap<QString, QString> &data, QString &device) const
 {
     if(!this->data.empty()) {
         device = this->device["MID_ADDR"];
@@ -53,7 +53,7 @@ bool iotFrame::getFrameData(QMap<QString, QString> &data, QString &device)
         return false;
 }
 
-bool iotFrame::getFrameData(const QString &key, QString &value)
+bool iotFrame::getFrameData(const QString &key, QString &value) const
 {
     if(!this->data.empty() && this->data.contains(key)) {
         value = this->data[key];
@@ -63,7 +63,7 @@ bool iotFrame::getFrameData(const QString &key, QString &value)
         return false;
 }
 
-bool iotFrame::getDeviceInfo(QMap<QString, QString> &device)
+bool iotFrame::getDeviceInfo(QMap<QString, QString> &device) const
 {
     if(!this->device.empty()) {
         device = this->device;
@@ -73,7 +73,7 @@ bool iotFrame::getDeviceInfo(QMap<QString, QString> &device)
         return false;
 }
 
-bool iotFrame::getCommand(QString &command)
+bool iotFrame::getCommand(QString &command) const
 {
     if(this->command.length()) {
         command = this->command;
