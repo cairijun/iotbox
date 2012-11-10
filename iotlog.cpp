@@ -1,5 +1,3 @@
-#include <QTime>
-
 #include "iotlog.h"
 
 iotLog::iotLog()

@@ -12,9 +12,6 @@ iotFrame::iotFrame()
 
 iotFrame::~iotFrame()
 {
-    delete &device;
-    delete &command;
-    delete &data;
 }
 
 iotFrame::iotFrame(

@@ -38,7 +38,6 @@ bool frameParser::praseFrame(const QByteArray &frame, iotFrame *frameObj) const
 
     QByteArray dataByteArray = frame.mid(10, frame[9]);
 
-    frameObj = new iotFrame(device, cmdStr, dataByteArray);
-
-    return true;
+//    frameObj = new iotFrame(device, cmdStr, dataByteArray);
+    return frameObj->praseFrameData(device, cmdStr, dataByteArray);
 }

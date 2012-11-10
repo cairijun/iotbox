@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     //网上找的解决乱码的代码
-    QTextCodec *codec = QTextCodec::codecForName("system");
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForTr(codec);
     QTextCodec::setCodecForLocale(codec);
     QTextCodec::setCodecForCStrings(codec);
