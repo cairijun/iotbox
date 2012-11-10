@@ -14,9 +14,6 @@ iotLog::iotLog(QTreeWidget *uiObj)
 
 iotLog::~iotLog()
 {
-    delete &logData;
-    if(!uiObj)
-        delete uiObj;
 }
 
 bool iotLog::update(const iotFrame &frameObj)
@@ -69,6 +66,22 @@ bool iotLog::getDeviceLog(const QString &device, QVector<QMap<QString, QString> 
 
 bool iotLog::updateUI()
 {
+    QMap<QString, QMap<QString, QString> > data;
+    if(!getDeviceCurrentData(data))
+        return false;
+    uiObj->clear();
+    QMap<QString, QMap<QString, QString> >::const_iterator i = data.constBegin();
+    while(i != data.constEnd()) {
+        QTreeWidgetItem aTopItem(QStringList() << i.key() << i.value()["节点类型"]);
+        QMap<QString, QString>::const_iterator j = i.value().constBegin();
+        while(j != i.value().constEnd()) {
+            aTopItem.addChild(new QTreeWidgetItem(
+                                  QStringList(j.key() + "：" + j.value())));
+            j++;
+        }
+        i++;
+        uiObj->addTopLevelItem(&aTopItem);
+    }
     return true;
 }
 
@@ -79,9 +92,9 @@ QMap<QString, QString> iotLog::makeDataMap(const iotFrame &frameObj) const
     frameObj.getFrameData(returnData);
     frameObj.getDeviceInfo(deviceInfo);
     returnData["设备地址"] = deviceInfo["MID_ADDR"] + "#" + deviceInfo["DST_ADDR"];
-    returnData["更新时间"] = QTime::currentTime().toString();
     QString command;
     frameObj.getCommand(command);
     returnData["来源指令"] = command;
+    returnData["更新时间"] = QTime::currentTime().toString();
     return returnData;
 }
