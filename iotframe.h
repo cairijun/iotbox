@@ -20,11 +20,11 @@ public:
     iotFrame(const QMap<QString, QString> &device, const QString &command, const QByteArray &data);
     ~iotFrame();
     bool praseFrameData(const QMap<QString, QString> &device, const QString &command, const QByteArray &data);
-    bool getFrameData(QMap<QString, QString> &data);
-    bool getFrameData(QMap<QString, QString> &data, QString &device);
-    bool getFrameData(const QString &key, QString &value);
-    bool getDeviceInfo(QMap<QString, QString> &device);
-    bool getCommand(QString &command);
+    bool getFrameData(QMap<QString, QString> &data) const;
+    bool getFrameData(QMap<QString, QString> &data, QString &device) const;
+    bool getFrameData(const QString &key, QString &value) const;
+    bool getDeviceInfo(QMap<QString, QString> &device) const;
+    bool getCommand(QString &command) const;
 
 private:
     QMap<QString, QString> device;

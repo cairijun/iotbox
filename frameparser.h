@@ -14,7 +14,7 @@ class frameParser
 public:
     frameParser();
     ~frameParser();
-    bool praseFrame(const QByteArray &frame, iotFrame *frameObj);
+    bool praseFrame(const QByteArray &frame, iotFrame *frameObj) const;
 };
 
 #endif // FRAMEPARSER_H
