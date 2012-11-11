@@ -1,5 +1,6 @@
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
+#include <QTime>
 
 #include "iotboxwidget.h"
 #include "ui_iotboxwidget.h"
@@ -38,6 +39,8 @@ void iotboxWidget::on_openButton_clicked()
     if(serialPortObj->isOpen()) {
         serialPortObj->close();
         ui->openButton->setText("打开");
+        ui->logList->addItem(
+                    QTime::currentTime().toString() + "关闭串口。");
     }
     else {
         QString portName = ui->portBox->itemData(ui->portBox->currentIndex()).toString();
@@ -46,9 +49,14 @@ void iotboxWidget::on_openButton_clicked()
         serialPortObj->setBaudRate(
                     static_cast<BaudRateType>(ui->rateBox->itemData(rateBoxIndex).toInt()));
         if(!serialPortObj->open(QIODevice::ReadWrite))
-            ui->logList->addItem(QString("打开串口失败：") + serialPortObj->errorString());
-        else
+            ui->logList->addItem(
+                        QTime::currentTime().toString()
+                        + "打开串口失败：" + serialPortObj->errorString());
+        else {
             ui->openButton->setText("关闭");
+            ui->logList->addItem(
+                        QTime::currentTime().toString() + "打开串口成功。");
+        }
     }
 }
 
@@ -74,7 +82,14 @@ void iotboxWidget::parseAByte(unsigned char aByte)
             dataRemain = aByte;
         if(aByte == FRA_SGN_ETX && (!dataRemain)) {//排除有效数据区出现的帧结束标志
             iotFrame *frameObj = new iotFrame();
-            parseObj->praseFrame(*mainBuffer, frameObj);
+            if(parseObj->praseFrame(*mainBuffer, frameObj)) {
+                ui->logList->addItem(
+                            QTime::currentTime().toString() + "接收到数据帧。");
+            }
+            else {
+                ui->logList->addItem(
+                            QTime::currentTime().toString() + "接收到数据帧，但数据帧无效。");
+            }
             logObj->update(*frameObj);
 
             mainBuffer->clear();
