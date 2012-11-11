@@ -42,13 +42,19 @@
          </rect>
         </property>
         <attribute name="headerVisible">
-         <bool>false</bool>
-        </attribute>
-        <attribute name="headerCascadingSectionResizes">
-         <bool>false</bool>
+         <bool>true</bool>
         </attribute>
         <attribute name="headerDefaultSectionSize">
-         <number>190</number>
+         <number>200</number>
+        </attribute>
+        <attribute name="headerHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="headerMinimumSectionSize">
+         <number>110</number>
+        </attribute>
+        <attribute name="headerShowSortIndicator" stdset="0">
+         <bool>true</bool>
         </attribute>
         <attribute name="headerStretchLastSection">
          <bool>true</bool>
