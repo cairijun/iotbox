@@ -2,6 +2,7 @@
 #define IOTFRAME_H
 
 //#include <QWidget>
+#include <QObject>
 #include <QMap>
 #include <QString>
 
