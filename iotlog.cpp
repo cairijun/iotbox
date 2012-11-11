@@ -74,7 +74,7 @@ bool iotLog::updateUI()
                     QStringList() << i.key() << i.value()["节点类型"]);
         QMap<QString, QString>::const_iterator j = i.value().constBegin();
         while(j != i.value().constEnd()) {
-            aTopItem.addChild(new QTreeWidgetItem(
+            aTopItem->addChild(new QTreeWidgetItem(
                                   QStringList(j.key() + "：" + j.value())));
             j++;
         }

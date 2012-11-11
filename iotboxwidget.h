@@ -34,8 +34,6 @@ private slots:
     
     void on_openButton_clicked();
 
-    void on_pushButton_clicked();
-
 private:
     Ui::iotboxWidget *ui;
     QextSerialPort *serialPortObj;
