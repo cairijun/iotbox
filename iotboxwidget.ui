@@ -41,6 +41,9 @@
           <height>211</height>
          </rect>
         </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
         <attribute name="headerVisible">
          <bool>true</bool>
         </attribute>
@@ -51,7 +54,7 @@
          <bool>false</bool>
         </attribute>
         <attribute name="headerMinimumSectionSize">
-         <number>110</number>
+         <number>180</number>
         </attribute>
         <attribute name="headerShowSortIndicator" stdset="0">
          <bool>true</bool>
