@@ -1,5 +1,3 @@
-#include <QTime>
-
 #include "iotlog.h"
 
 iotLog::iotLog()
@@ -72,7 +70,8 @@ bool iotLog::updateUI()
     uiObj->clear();
     QMap<QString, QMap<QString, QString> >::const_iterator i = data.constBegin();
     while(i != data.constEnd()) {
-        QTreeWidgetItem aTopItem(QStringList() << i.key() << i.value()["节点类型"]);
+        QTreeWidgetItem *aTopItem = new QTreeWidgetItem(
+                    QStringList() << i.key() << i.value()["节点类型"]);
         QMap<QString, QString>::const_iterator j = i.value().constBegin();
         while(j != i.value().constEnd()) {
             aTopItem.addChild(new QTreeWidgetItem(
@@ -80,7 +79,7 @@ bool iotLog::updateUI()
             j++;
         }
         i++;
-        uiObj->addTopLevelItem(&aTopItem);
+        uiObj->addTopLevelItem(aTopItem);
     }
     return true;
 }

@@ -64,10 +64,12 @@ QMap<char, QString> iotFrame::init(int type) \
         rObj[0x05] = "Bluetooth"; \
         rObj[0x06] = "HF"; \
         rObj[0x07] = "UHF"; \
+        break;\
     case 1:/* 命令描述定义 */ \
         rObj[0x21] = "应答"; \
         rObj[0x22] = "定时上传"; \
         rObj[0x23] = "按键突发上传"; \
+        break;\
     case 2:/* IOT-EB类型定义 */ \
         rObj[0x02] = "IOT-EB2"; \
         rObj[0x03] = "IOT-EB3"; \
@@ -76,6 +78,7 @@ QMap<char, QString> iotFrame::init(int type) \
         rObj[0x06] = "IOT-EB6"; \
         rObj[0x07] = "IOT-EB7(雨滴传感器)"; \
         rObj[0x0F] = "IOT-EB15(心率检测传感器)"; \
+        break;\
     } \
     return rObj; \
 }
