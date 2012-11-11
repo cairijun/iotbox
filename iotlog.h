@@ -2,9 +2,11 @@
 #define IOTLOG_H
 
 #include <QMap>
+#include <QTime>
 #include <QString>
 #include <QVector>
 #include <QTreeWidget>
+#include <QTreeWidgetItem>
 
 #include "iotframe.h"
 
