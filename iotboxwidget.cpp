@@ -1,3 +1,6 @@
+#include <QTreeWidgetItem>
+#include <QTreeWidget>
+
 #include "iotboxwidget.h"
 #include "ui_iotboxwidget.h"
 
@@ -72,26 +75,7 @@ void iotboxWidget::parseAByte(unsigned char aByte)
         if(aByte == FRA_SGN_ETX && (!dataRemain)) {//排除有效数据区出现的帧结束标志
             iotFrame *frameObj = new iotFrame();
             parseObj->praseFrame(*mainBuffer, frameObj);
-            if(!frameObj)
-                ui->logList->addItem(QString("F**K"));
-            else
-                if(!logObj->update(*frameObj))
-                    ui->logList->addItem(QString("S**T"));
-
-            QMap<QString, QMap<QString, QString> > dev;
-            logObj->getDeviceCurrentData(dev);
-            QMap<QString, QMap<QString, QString> >::const_iterator i = dev.constBegin();
-            while(i != dev.constEnd()) {
-                ui->logList->addItem(i.key());
-                QTreeWidgetItem aTopItem(QStringList() << i.key() << i.value()["节点类型"]);
-                QMap<QString, QString>::const_iterator j = i.value().constBegin();
-                while(j != i.value().constEnd()) {
-                    ui->logList->addItem("  " + j.key() + ":" + j.value());
-                    j++;
-                }
-                ui->dataTree->addTopLevelItem(&aTopItem);
-                i++;
-            }
+            logObj->update(*frameObj);
 
             mainBuffer->clear();
         }
